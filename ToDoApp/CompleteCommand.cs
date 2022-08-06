@@ -4,7 +4,7 @@ namespace ToDoApp;
 
 public class CompleteCommand : ICommand
 {
-    public bool Execute(string input, List<ToDoItem> table)
+    public async Task<bool> Execute(Mkb.DapperRepo.Repo.SqlRepoAsync repoAsync,string input, List<TaskItem> table)
     {
         var completeMatch = Regex.Match(input!, "complete (.*)");
         if (!completeMatch.Success) return false;
@@ -13,6 +13,7 @@ public class CompleteCommand : ICommand
         {
             item.TaskDoneTime = DateTime.Now;
             item.Done = true;
+           await repoAsync.Update(item);
             break;
         }
 

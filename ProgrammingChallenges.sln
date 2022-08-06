@@ -2,8 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp", "ToDoApp\ToDoApp.csproj", "{64CEFE0F-C58F-4C09-9944-4506FCA89D13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkovChainGenerator", "MarkovChainGenerator\MarkovChainGenerator.csproj", "{77101E52-367A-4A8E-81E5-7EAD418D616C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,9 +12,5 @@ Global
 		{64CEFE0F-C58F-4C09-9944-4506FCA89D13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64CEFE0F-C58F-4C09-9944-4506FCA89D13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64CEFE0F-C58F-4C09-9944-4506FCA89D13}.Release|Any CPU.Build.0 = Release|Any CPU
-		{77101E52-367A-4A8E-81E5-7EAD418D616C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{77101E52-367A-4A8E-81E5-7EAD418D616C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{77101E52-367A-4A8E-81E5-7EAD418D616C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{77101E52-367A-4A8E-81E5-7EAD418D616C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

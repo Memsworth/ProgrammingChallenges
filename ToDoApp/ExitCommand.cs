@@ -4,7 +4,7 @@ namespace ToDoApp;
 
 public class ExitCommand : ICommand
 {
-    public bool Execute(string input, List<ToDoItem> items)
+    public async Task<bool> Execute(Mkb.DapperRepo.Repo.SqlRepoAsync repoAsync,string input, List<TaskItem> items)
     {
         var exitMatch = Regex.Match(input!, "exit");
         if (!exitMatch.Success) return false;
