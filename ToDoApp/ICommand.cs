@@ -3,5 +3,5 @@
 public interface ICommand
 {
     //Execute command
-    bool Execute(string input, List<ToDoItem> items);
+    Task<bool> Execute( Mkb.DapperRepo.Repo.SqlRepoAsync repoAsync,string input, List<TaskItem> items);
 }

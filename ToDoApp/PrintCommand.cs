@@ -5,9 +5,9 @@ namespace ToDoApp;
 
 public class PrintCommand : ICommand
 {
-    public bool Execute(string input, List<ToDoItem> table)
+    public async Task<bool> Execute(Mkb.DapperRepo.Repo.SqlRepoAsync repoAsync,string input, List<TaskItem> table)
     {
-        var printMatch = Regex.Match(input, "print (.*)");
+        var printMatch = Regex.Match(input, "^print");
 
         if (!printMatch.Success) return false;
         if (table.Count == 0)

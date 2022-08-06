@@ -6,34 +6,39 @@
  */
 
 
+using System.Reflection;
+
 namespace ToDoApp;
 public class ToDoApplication
 {
-    public List<ToDoItem> Table { get; set; }
+    private Mkb.DapperRepo.Repo.SqlRepoAsync _repoAsync;
+    public List<TaskItem> Table { get; set; }
 
-    public List<ICommand> Commands = new List<ICommand>
-    {
-        new AddCommand(),
-        new CompleteCommand(),
-        new DeleteCommand(),
-        new PrintCommand(),
-        new ExitCommand()
-    };
+    public List<ICommand> Commands = Assembly.GetAssembly(typeof(ToDoApplication)).GetTypes()
+        .Where(e => e.IsAbstract == false && e.IsClass && e.IsAssignableTo(typeof(ICommand)))
+        .Select(e => (ICommand) Activator.CreateInstance(e))
+        .ToList();
     
-    public ToDoApplication()
+    public ToDoApplication(Mkb.DapperRepo.Repo.SqlRepoAsync repoAsync)
     {
-        Table = new List<ToDoItem>();
+        _repoAsync = repoAsync;
     }
-    public void RunProgram()
+    
+    public async Task RunProgram()
     {
+        Table = (await _repoAsync.GetAll<TaskItem>()).ToList();
         while (true)
         {
             PrintMenu();
             Console.Write("What you wanna do?: ");
             string? userInput = Console.ReadLine();
-            foreach (var commands in Commands.Where(commands => commands.Execute(userInput!, Table)))
+            foreach (var command in Commands)
             {
-                Console.WriteLine("Operation Done\n");
+                if (await command.Execute(_repoAsync, userInput!, Table))
+                {
+                    Console.WriteLine("Operation Done\n");
+                    break;
+                }
             }
         }
         
