@@ -9,9 +9,9 @@
 namespace ToDoApp;
 public class ToDoApplication
 {
-    public List<ToDoItem> Table { get; set; }
+    private List<ToDoItem> Table { get; set; }
 
-    public List<ICommand> Commands = new List<ICommand>
+    private readonly List<ICommand> _commands = new List<ICommand>
     {
         new AddCommand(),
         new CompleteCommand(),
@@ -31,7 +31,7 @@ public class ToDoApplication
             PrintMenu();
             Console.Write("What you wanna do?: ");
             string? userInput = Console.ReadLine();
-            foreach (var commands in Commands.Where(commands => commands.Execute(userInput!, Table)))
+            foreach (var commands in _commands.Where(commands => commands.Execute(userInput!, Table)))
             {
                 Console.WriteLine("Operation Done\n");
             }
