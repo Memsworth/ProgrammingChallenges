@@ -1,38 +1,35 @@
-﻿namespace MarkovChainGenerator;
+﻿using System.Text.RegularExpressions;
 
-public class TextGenerator
+namespace MarkovChainGenerator;
+
+public static class TextGenerator
 {
-    private static readonly string rootFolder = @"C:\Repos\GitHub\ProgrammingChallenges\MarkovChainGenerator\";
+    private const string TextFile = @"C:\Repos\GitHub\ProgrammingChallenges\MarkovChainGenerator\inputArticle.txt";
+    private const string CollectionOfEngWords = @"C:\Repos\GitHub\ProgrammingChallenges\MarkovChainGenerator\words.txt";
+    private static void LoadFile(string filepath, HashSet<string> engWords)
+    {
+        if (!File.Exists(filepath)) return;
 
-    private static readonly string textFile =
-        @"C:\Repos\GitHub\ProgrammingChallenges\MarkovChainGenerator\inputArticle.txt";
+        var cleanText = Regex.Replace(File.ReadAllText(filepath), @"/[^a-z0-9\-\s]/i", string.Empty);
+        var splitText = cleanText.Split()
+            .Where(word => !string.IsNullOrWhiteSpace(word)).ToArray();
+        
+        var textEndDot = splitText.Where(word => word.EndsWith(".")).ToArray();
+
+    }
+
+    private static void FindNextWord()
+    {
+        
+    }
+    private static void GenerateSentence()
+    {
+        
+    }
     public static void RunProgram()
     {
-        if (!File.Exists(textFile)) return;
-        var text = File.ReadAllText(textFile);
-        Dictionary<string, int> textRepeat = new Dictionary<string, int>();
-
-        string[] words = text.Split();
-
-        int total = 0;
-        foreach (var word in words)
-        {
-            total++;
-            if (!textRepeat.ContainsKey(word))
-            {
-                textRepeat.Add(word,1);
-            }
-            else
-            {
-                textRepeat[word]++;
-            }
-        }
+        var englishWordsCollection = new HashSet<string>(File.ReadAllLines(CollectionOfEngWords));
         
-        foreach (KeyValuePair<string, int> pair in textRepeat)
-        {
-            Console.WriteLine($"{pair.Key}:{pair.Value/total:F7}");
-        }
-
-        Console.WriteLine($"Total = {total}");
+        LoadFile(TextFile, englishWordsCollection);
     }
 }
