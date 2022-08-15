@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizzBuzz", "FizzBuzz\FizzBu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPNCalculator", "RPNCalculator\RPNCalculator.csproj", "{17AA6F31-1113-405C-BF03-E42446270B2A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageTwoASCII", "ImageTwoASCII\ImageTwoASCII.csproj", "{F2ED72FA-4EDD-48AA-B285-6152EA7FF2DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{17AA6F31-1113-405C-BF03-E42446270B2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17AA6F31-1113-405C-BF03-E42446270B2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17AA6F31-1113-405C-BF03-E42446270B2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2ED72FA-4EDD-48AA-B285-6152EA7FF2DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2ED72FA-4EDD-48AA-B285-6152EA7FF2DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2ED72FA-4EDD-48AA-B285-6152EA7FF2DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2ED72FA-4EDD-48AA-B285-6152EA7FF2DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
