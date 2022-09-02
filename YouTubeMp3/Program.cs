@@ -1,7 +1,5 @@
-﻿using System.Runtime.Versioning;
-using VideoLibrary;
-using Xabe.FFmpeg;
-using Xabe.FFmpeg.Downloader;
+﻿using VideoLibrary;
+using MediaToolkit;
 
 namespace YouTubeMp3 // Note: actual namespace depends on the project name.
 {
