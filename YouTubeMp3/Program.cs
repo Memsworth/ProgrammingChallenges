@@ -1,5 +1,6 @@
 ﻿using VideoLibrary;
 using MediaToolkit;
+using MediaToolkit.Model;
 
 namespace YouTubeMp3 // Note: actual namespace depends on the project name.
 {
@@ -7,19 +8,20 @@ namespace YouTubeMp3 // Note: actual namespace depends on the project name.
     {
         static void Main(string[] args)
         {
-            const string? url = "https://www.youtube.com/watch?v=L5CV53wCWO0";
-            var filepath = "C:\\Repos";
-            var file = "data.mp4";
-            string endresult =  Path.Combine(filepath, file);
+            string url = Console.ReadLine() ?? throw new InvalidOperationException();
+            var youTubeItem = YouTube.Default;
+            YouTubeVideo video = youTubeItem.GetVideo(url);
+            var bytes = video.GetBytes();
             
-            var item = new YouTube();
-            var item2 = item.GetVideo(url);
-            File.WriteAllBytes(endresult, item2.GetBytes());
 
-            string outputFileName = Path.ChangeExtension(endresult, ".mp3");
+            var inputFile = new MediaFile { Filename = video.FullName };
+            var outputFile = new MediaFile { Filename = @"C:\Users\Abubakar\Music\name.mp3" };
+
+            using (var engine = new Engine())
+            {
+                engine.Convert(inputFile, outputFile);
+            }
         }
-
-
     }
 
 }
