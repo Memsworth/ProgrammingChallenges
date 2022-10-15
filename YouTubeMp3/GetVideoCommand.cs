@@ -16,9 +16,7 @@ public class GetVideoCommand : ICommand
     private async Task DownloadVideo(string url)
     {
         var youtube = new YoutubeClient();
-
         var video = await youtube.Videos.GetAsync(url);
-
 
 
     }
