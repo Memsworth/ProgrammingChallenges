@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World");
+            var game = new SnakeGame(24);
+            game.GameRenderer.RenderGame(game);
         }
     }
 }
