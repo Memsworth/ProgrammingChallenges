@@ -5,32 +5,26 @@ public class GameRenderer
     
     public void RenderGame(SnakeGame game)
     {
+        Console.WriteLine();
         for (int i = 0; i < game.GameGrid.GameGrid.GetLength(0); i++)
         {
             for (int j = 0; j < game.GameGrid.GameGrid.GetLength(1); j++)
             {
-                foreach (var line in game.Snake.SnakePosition)
+                if (game.Apple.AppleLocation.Row == i && game.Apple.AppleLocation.Col == j)
                 {
-                    if (line.Start.Row == i && line.Start.Col == j)
+                    Console.Write($"A", Console.ForegroundColor == ConsoleColor.Red);
+                }
+                else
+                {
+                    foreach (var point in game.Snake.SnakePosition)
                     {
-                        Console.Write("S");
-                    }
-
-                    if (line.End.Row == i && line.End.Col == j)
-                    {
-                        Console.Write("S");
-                    }
-                    
-                    if (game.Apple.AppleLocation.Row == i && game.Apple.AppleLocation.Col == j)
-                    {
-                        Console.Write("A");
-                    }
-                    
-                    else
-                    {
-                        Console.Write("-");
+                        if (point.Row == i && point.Col == j)
+                        {
+                            Console.Write("S");
+                        }
                     }
                 }
+
             }
 
             Console.WriteLine();

@@ -2,9 +2,9 @@ namespace Snake;
 
 public class Apple
 {
-    public Location AppleLocation { get; private set; }
+    public Point AppleLocation { get; private set; }
 
-    public Apple(Location location)
+    public Apple(Point location)
     {
         AppleLocation = location;
     }

@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
             var game = new SnakeGame(24);
-            game.GameRenderer.RenderGame(game);
+            game.Run();
         }
     }
 }
